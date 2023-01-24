@@ -1,0 +1,122 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/474eae7f54.js" crossorigin="anonymous"></script>
+     <title>Login/registro</title>
+     <link rel="stylesheet" href="loginseg.css">
+     <script src="js/reCAPTCHALogin.js"></script>
+	
+</head>
+<body>
+    <div class="cajafuera">
+    <div class="formulariocaja">
+        <div class="botondeintercambiar">
+            <div id="btnvai"></div>
+             <button type="button" class="botoncambiarcaja" onclick="loginvai()" id="vaibtnlogin">Login</button>
+             <button type="button" class="botoncambiarcaja" onclick="registrarvai()" id="vaibtnregistrar">Afiliarse</button>
+		</div>
+<!--Formulario para el login -->
+<form id="frmlogin" class="grupo-entradas" method="POST" action="login.php">
+    <div class="logovai"><img src="img/user.png"></div>
+    <i class="fa-solid fa-user"></i> Nombre </b>
+    <input type="text" class="cajaentradatexto" name="txtnombre" id="txtnombre" required>
+    <i class="fa-solid fa-lock"></i> Clave</b>
+    <input type="password" class="cajaentradatexto" name="txtpassword" required>
+    <div><i class="fa-solid fa-check-double"></i> Verificación</b></div>
+    <input type="text" class="cajaentradarecaptcha" id="txtrecaptcha" required>
+    <div id="vericodigovai" onclick="crearrecaptcha()" class="fondorecaptcha">
+     
+        </div>
+        <div class="checkboxvai"><a onclick="abrirform()">Recuperar contraseña</a></div>
+    <button type="submit" class="botonenviar" name="btnloginx">Iniciar sesión</button>
+    </form>
+    <!--Formulario para el login -->
+		<!--Formulario para registrar -->
+        <form id="frmregistrar" class="grupo-entradas" method="POST" action="registrar.php">
+            <i class="fa-solid fa-id-card"></i> Cedula</b>
+        <input type="cedula" class="cajaentradatexto" required name="txtcedula">
+
+        <i class="fa-solid fa-envelope"></i> Correo</b>
+        <input type="email" class="cajaentradatexto" required name="txtcorreo">
+
+        <i class="fa-solid fa-lock"></i> Contraseña</b>
+        <input type="password" class="cajaentradatexto" required name="txtpassword">
+			
+        <i class="fa-solid fa-user"></i> Nombre</b>
+		<input type="text" class="cajaentradatexto" required name="txtnombre">
+
+            <i class="fa-solid fa-mobile-retro"></i> Telefono</b>
+        <input type="telefono" class="cajaentradatexto" required name="txttelefono">
+            <p>
+                Politica de Seguridad <br>
+                La clave debe de tener: <br>
+                Una Mayuscula <br>
+                Un Caracter especial<br>
+                Un minimo de 8 caracteres <br>
+                Un maximo de 16 caracteres
+            </p>
+        <div class="checkboxvai"><input type="checkbox"> Acepto los términos y condiciones de uso.</div>
+        <button type="submit" class="botonenviar" name="btnregistrarx">Afiliar</button>
+        </form>
+        </div>
+    </div>
+    <script>
+    var x = document.getElementById("frmlogin");
+    var y = document.getElementById("frmregistrar");
+    var z = document.getElementById("btnvai");
+	var textcolor1=document.getElementById("vaibtnlogin");
+	var textcolor2=document.getElementById("vaibtnregistrar");
+	textcolor1.style.color="white";
+	textcolor2.style.color="black";
+
+        function registrarvai()
+		{
+			
+            x.style.left = "-400px";
+            y.style.left = "50px";
+            z.style.left = "110px";
+			textcolor1.style.color="black";
+			textcolor2.style.color="white";
+	
+        }
+            function loginvai()
+		{
+			
+            x.style.left = "50px";
+            y.style.left = "450px";
+            z.style.left = "0";
+			textcolor1.style.color="white";
+			textcolor2.style.color="black";
+
+        }
+		
+		function abrirform() {
+  document.getElementById("formrecuperar").style.display = "block";
+  
+}
+
+function cancelarform() {
+  document.getElementById("formrecuperar").style.display = "none";
+}
+    </script>
+<div class="caja_popup" id="formrecuperar">
+  <form action="recuperar.php" class="contenedor_popup" method="POST">
+        <table>
+		<tr><th colspan="2">Recuperar contraseña</th></tr>
+            <tr> 
+                <td><i class="fa-solid fa-envelope"></i> Correo</b></td>
+                <td><input type="email" name="txtcorreo" required class="cajaentradatexto"></td>
+            </tr>
+            <tr> 	
+               <td colspan="2">
+				   <button type="button" onclick="cancelarform()" class="txtrecuperar">Cancelar</button>
+				   <input class="txtrecuperar" type="submit" name="btnrecuperar" value="Enviar" onClick="javascript: return confirm('¿Deseas enviar tu contraseña a tu correo?');">
+			</td>
+            </tr>
+        </table>
+    </form>
+	</div>
+    <script src="js/BotonCambiaFormularios.js"></script>
+</body>
+</html>
